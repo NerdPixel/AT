@@ -60,5 +60,4 @@ if __name__ == '__main__':
     traverse(t)
 
     relevantNodes = [(7, 8), (9, 10), (11, 12), (13, 14)]
-
-    traverse(t)
+    #relevantNodes = [(7, 14), (8, 9), (10, 13), (11, 12)]
