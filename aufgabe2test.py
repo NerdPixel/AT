@@ -3,7 +3,6 @@ from unittest import TestCase
 from ATSelf.Aufgabe2 import *
 import random
 import matplotlib.pyplot as plt
-import os
 
 def setup1():
     s1 = Node("S1")
@@ -81,9 +80,11 @@ class Test(TestCase):
             self.assertEqual(res, exp, f"Case: {idx}")
 
     def test_solve_random_ntimes(self):
-        n = [1, 100, 1000]
+        n = np.arange(0, 10000, 1000)
         runtime = []
         for i in range(len(n)):
+
+            print(n[i])
             start = timeit.default_timer()
 
             root, nodeList = generateRandom(n[i])
