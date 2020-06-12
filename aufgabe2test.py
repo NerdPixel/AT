@@ -3,6 +3,7 @@ from unittest import TestCase
 from ATSelf.Aufgabe2 import *
 import random
 import matplotlib.pyplot as plt
+import os
 
 def setup1():
     s1 = Node("S1")
@@ -98,12 +99,14 @@ class Test(TestCase):
 
             self.assertEqual(res, 0, f"Rand: {i}")
 
+
+
         plt.scatter(*zip(*runtime))
         plt.plot(*zip(*runtime))
-        plt.savefig(''+str(n[-1])+'.png')
+        plt.savefig('plots/'+str(n[-1])+'.png')
         print(runtime)
 
         plt.xscale("log")
         plt.scatter(*zip(*runtime))
         plt.plot(*zip(*runtime))
-        plt.savefig('log' + str(n[-1]) + '.png')
+        plt.savefig('plots/' + str(n[-1]) + '_log.png')
