@@ -80,7 +80,7 @@ class Test(TestCase):
             self.assertEqual(res, exp, f"Case: {idx}")
 
     def test_solve_random_ntimes(self):
-        n = [100]
+        n = [1, 100, 1000]
         runtime = []
         for i in range(len(n)):
             start = timeit.default_timer()
