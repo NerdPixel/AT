@@ -4,6 +4,7 @@ from ATSelf.Aufgabe2 import *
 import random
 import matplotlib.pyplot as plt
 
+
 def setup1():
     s0 = Node("0")
     s1 = Node("1", s0)
@@ -87,18 +88,20 @@ class Test(TestCase):
             self.assertEqual(res, exp, f"Case: {idx}")
 
     def test_solve_random_ntimes(self):
-        n = np.arange(0, 10000, 1000)
+        maxValue = 100000
+        step = 5000
+        n = np.arange(0, int(maxValue), step)
         runtime = []
         for i in range(len(n)):
 
-            print(n[i])
             start = timeit.default_timer()
 
             root, nodeList = generateRandom(n[i])
 
             stop = timeit.default_timer()
-            delta = stop-start
+            delta = stop - start
 
+            print(str(n[i]) + "\t", "\t\tdelta: " + str(delta / 60) + "\t\tin minutes")
             runtime.append((n[i], delta))
 
             res = solve(nodeList, f0)
@@ -107,14 +110,17 @@ class Test(TestCase):
 
             self.assertEqual(res, 0, f"Rand: {i}")
 
-
-
         plt.scatter(*zip(*runtime))
         plt.plot(*zip(*runtime))
-        plt.savefig('plots/'+str(n[-1])+'.png')
+        plt.savefig('plots/' + str(n[-1]) + '.png')
         print(runtime)
 
         plt.xscale("log")
         plt.scatter(*zip(*runtime))
         plt.plot(*zip(*runtime))
         plt.savefig('plots/' + str(n[-1]) + '_log.png')
+
+
+if __name__ == '__main__':
+    n = Test()
+    n.test_solve_random_ntimes()
