@@ -2,19 +2,43 @@ from pptree import *
 import numpy as np
 
 
-def setup():
-    s0 = Node("S0")
+class Node:
+    def __init__(self, name, parent=None):
+        self.name = name
+        self.parent = parent
+        self.children = []
+        self.ID = int(name[-1])
 
-    s1 = Node("S1", s0)
+        if parent:
+            self.parent.children.append(self)
 
-    s2 = Node("S2", s1)
-    s3 = Node("S3", s1)
-    s4 = Node("S4", s1)
+    def adj(self):
+        c = []
+        if self.parent is not None:
+            c += [self.parent]
+        c += self.children
+        return c
 
-    s5 = Node("S5", s2)
-    s6 = Node("S6", s2)
+    def __delitem__(self, key):
+        self.__delattr__(self.ID)
 
-    return s0, [s0, s1, s2, s3, s4, s5, s6]
+    def __getitem__(self, item):
+        return self.__getattribute__(self.item)
+
+    def __setitem__(self, key, value):
+        self.__setattr__(key, value)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
+
+    def __add__(self, other):
+        return self.name + other
+
+    def __radd__(self, other):
+        return other + self.name
 
 
 def sortNodes(nodeList):
@@ -26,24 +50,6 @@ def sortNodes(nodeList):
     return nodes
 
 
-def getNodeID(node):
-    return int(node.name[-1])
-
-
-def f(node, i):
-    return (i + 1) ** 2
-
-
-def hit(node, i):
-    if i == 0:
-        return 1
-    count = 1
-    for child in node.children:
-        count += hit(child, i - 1)
-    return count
-
-
-if __name__ == '__main__':
-    root, nodeList = setup()
-    print_tree(root, horizontal=False)
-    nodeListSorted = sortNodes(nodeList)
+def solve(root, nodelist):
+    # TODO Implement
+    return 0

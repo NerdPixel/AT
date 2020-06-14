@@ -13,6 +13,7 @@ def setup1():
 
     return s0, [s0, s1, s2, s3]
 
+
 def setup2():
     s0 = Node("0")
 
@@ -27,6 +28,7 @@ def setup2():
 
     return s0, [s0, s1, s2, s3, s4, s5, s6]
 
+
 def setup3():
     s4 = Node("4")
     s0 = Node("0", s4)
@@ -36,6 +38,7 @@ def setup3():
 
     return s4, [s0, s1, s2, s3, s4]
 
+
 def setup4():
     s0 = Node("0")
     s1 = Node("1", s0)
@@ -43,6 +46,7 @@ def setup4():
     s3 = Node("3", s2)
 
     return s0, [s0, s1, s2, s3]
+
 
 def generateRandom(n: int):
     s0 = Node("0")
@@ -53,17 +57,22 @@ def generateRandom(n: int):
 
     return s0, nodes
 
+
 def f0(node, i):
     return i
+
 
 def f1(node, i):
     return i + 1
 
+
 def f2(node, i):
-    return (i + 1)**2
+    return (i + 1) ** 2
+
 
 def f3(node, i):
-    return int(node.name) + i**2
+    return int(node.name) + i ** 2
+
 
 test_cases = [
     (setup1, 2, f1),
@@ -75,6 +84,7 @@ test_cases = [
     (setup4, 4, f2),
     (setup4, 3, f3),
 ]
+
 
 class Test(TestCase):
     def test_solve(self):
